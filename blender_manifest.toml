@@ -1,0 +1,13 @@
+schema_version = "1.0.0"
+id = "root_maker"
+version = "1.0.0"
+name = "RootMaker"
+tagline = "An add-on for creating a root bone and baking it into existing actions"
+maintainer = "Manas R. Makde"
+type = "add-on"
+website = "https://github.com/ManasMakde/RootMaker/"
+tags = ["Animation", "Rigging", "Bake", "User Interface"]
+blender_version_min = "4.2.0"
+license = [
+  "SPDX:GPL-3.0-or-later",
+]
