@@ -1,6 +1,6 @@
-schema_version = "1.0.1"
+schema_version = "1.0.0"
 id = "root_maker"
-version = "1.0.0"
+version = "1.0.1"
 name = "RootMaker"
 tagline = "Create root bone & bake into actions"
 maintainer = "Manas R. Makde"
