@@ -1,4 +1,4 @@
-schema_version = "1.0.0"
+schema_version = "1.0.1"
 id = "root_maker"
 version = "1.0.0"
 name = "RootMaker"
@@ -7,7 +7,7 @@ maintainer = "Manas R. Makde"
 type = "add-on"
 website = "https://github.com/ManasMakde/RootMaker/"
 tags = ["Animation", "Rigging", "Bake"]
-blender_version_min = "4.2.0"
+blender_version_min = "5.0.0"
 license = [
   "SPDX:GPL-3.0-or-later",
 ]

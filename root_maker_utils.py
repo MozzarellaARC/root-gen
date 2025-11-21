@@ -15,6 +15,32 @@ class BakeType(Enum):
     KEEP_ON_GROUND = "KEEP_ON_GROUND"
     ALLOW_OFFSET_IN_AIR = "ALLOW_OFFSET_IN_AIR"
 
+def remove_bone_tracks(action, bone_name):
+    if not action:
+        print("No action provided")
+        return
+
+    target_path = f'pose.bones["{bone_name}"]'
+
+
+    # This is for blender 5.0 since fcurves property have been removed from Action
+    if not hasattr(action, "fcurves"): 
+        from bpy_extras import anim_utils
+
+        for slot in action.slots:
+            channelbag = anim_utils.action_ensure_channelbag_for_slot(action, slot)
+            to_remove = [fcu for fcu in channelbag.fcurves if fcu.data_path.startswith(target_path)]
+            for fcu in to_remove:
+                channelbag.fcurves.remove(fcu)
+
+        return
+
+
+    # This is for blender <5.0
+    to_remove = [fcu for fcu in action.fcurves if fcu.data_path.startswith(target_path)]
+    for fcu in to_remove:
+        action.fcurves.remove(fcu)
+
 def create_root_bone(armature, root_bone_name, root_length):
 
     # Get armature
@@ -138,9 +164,7 @@ def bake_root_into_action(armature, root_bone_name, action, postfix, bake_mode, 
 
 
     # Clear existing tracks of root bone
-    fcurves = [fc for fc in new_action.fcurves if fc.data_path.startswith(f'pose.bones["{root_bone_name}"]')]
-    for fc in fcurves:
-        new_action.fcurves.remove(fc)
+    remove_bone_tracks(new_action, root_bone_name)
 
 
     # Get root and follow pose bones
@@ -150,7 +174,7 @@ def bake_root_into_action(armature, root_bone_name, action, postfix, bake_mode, 
     
     # Before starting make sure root is at armature origin
     bpy.ops.pose.select_all(action='DESELECT')
-    root_bone.bone.select = True
+    root_bone.select = True
     bpy.ops.pose.transforms_clear()
 
 
@@ -229,7 +253,7 @@ def bake_root_into_action(armature, root_bone_name, action, postfix, bake_mode, 
 
     # Bake action
     bpy.ops.pose.select_all(action='DESELECT')
-    root_bone.bone.select = True
+    root_bone.select = True
     bpy.ops.nla.bake(
         frame_start=frame_start, 
         frame_end=frame_end,
