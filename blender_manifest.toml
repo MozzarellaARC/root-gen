@@ -6,7 +6,7 @@ tagline = "Create root bone & bake into actions"
 maintainer = "Manas R. Makde"
 type = "add-on"
 website = "https://github.com/ManasMakde/RootMaker/"
-tags = ["Animation", "Rigging", "Bake", "User Interface"]
+tags = ["Animation", "Rigging", "Bake"]
 blender_version_min = "4.2.0"
 license = [
   "SPDX:GPL-3.0-or-later",
