@@ -265,3 +265,5 @@ def bake_root_into_action(armature, root_bone_name, action, postfix, bake_mode, 
         use_current_action=True,
         bake_types={'POSE'}
     )
+
+

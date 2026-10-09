@@ -1,9 +1,9 @@
 schema_version = "1.0.0"
-id = "root_maker"
+id = "root_gen"
 version = "1.0.1"
-name = "RootMaker"
+name = "Root Gen"
 tagline = "Create root bone & bake into actions"
-maintainer = "Manas R. Makde"
+maintainer = "Manas R. Makde, MozzarellaARC"
 type = "add-on"
 website = "https://github.com/ManasMakde/RootMaker/"
 tags = ["Animation", "Rigging", "Bake"]
